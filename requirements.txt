@@ -1,0 +1,7 @@
+pandas==2.2.3
+streamlit==1.45.1
+plotly==5.24.1
+numpy==2.2.6
+faker==30.0.0
+pycountry==24.6.1
+pycountry_convert==0.7.2
