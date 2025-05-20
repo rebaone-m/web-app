@@ -6,3 +6,4 @@ faker==30.0.0
 pycountry==24.6.1
 pycountry_convert==0.7.2
 python-dateutil==2.9.0.post0
+flake8==6.1.0
