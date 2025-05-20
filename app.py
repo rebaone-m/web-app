@@ -542,7 +542,6 @@ def assign_performance_colors(values, threshold_high, threshold_low):
         elif val >= threshold_low:
             colors.append(ORANGE)
         else:
- personally:
             colors.append(RED)
     return colors
 
