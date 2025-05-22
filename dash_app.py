@@ -220,35 +220,12 @@ st.markdown(
     """, unsafe_allow_html=True
 )
 
-# --- Admin Login ---
-def login():
-    st.markdown("<h2 style='text-align: center; color: #ffffff;'>Admin Login</h2>", unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([2, 1, 2])
-    with col2:
-        st.markdown("###")
-        username = st.text_input("Username", key="username", placeholder="Username", label_visibility="collapsed")
-        password = st.text_input("Password", type="password", key="password", placeholder="Password", label_visibility="collapsed")
-        if st.button("Login", use_container_width=True):
-            if username == "Bi81nh" and password == "Bida21@0031":
-                st.session_state["logged_in"] = True
-                st.success("Login successful!")
-                st.rerun()
-            else:
-                st.error("Invalid credentials. Contact helpdesk.")
-
-# Check login status
-if "logged_in" not in st.session_state:
-    st.session_state["logged_in"] = False
-
-if not st.session_state["logged_in"]:
-    login()
-    st.stop()
 
 # --- Load Data ---
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv('Sales_Dataset.csv', parse_dates=['Date'])
+        df = pd.read_csv('Dataset.csv', parse_dates=['Date'])
         string_columns = [
             'Country', 'Company Name', 'Subscription Status', 'Returning Customer',
             'Campaign Name', 'Campaign Type', 'Product Name', 'Category',
@@ -325,9 +302,6 @@ with st.sidebar:
         st.write(f"Missing Columns: {set(['Country', 'Total Revenue', 'Sale Status', 'Date']) - set(df.columns)}")
         st.write(f"Data Types:\n{df.dtypes}")
 
-    if st.button("Logout", key="logout"):
-        st.session_state.logged_in = False
-        st.rerun()
 
 completed = filtered[filtered['Sale Status'].str.lower().str.strip() == 'completed']
 
